@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbecker <bbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/06 15:34:14 by bbecker           #+#    #+#             */
-/*   Updated: 2014/11/10 17:49:23 by bbecker          ###   ########.fr       */
+/*   Created: 2014/11/10 09:51:47 by bbecker           #+#    #+#             */
+/*   Updated: 2014/11/10 18:46:38 by bbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+#define GET_NEXT_LINE_H
 
-char	*ft_strsub(char const *s, unsigned int start, size_t len)
+# define BUFF_SIZE 32
+
+# include "libft.h"
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+
+
+typedef	struct		s_infos
 {
-	char			*data;
-	unsigned int	c;
+	char	*buf;
+	int		start;
+	int		size;
+	int		state;
+	int		count;
+}					t_infos;
 
-	if (s == NULL)
-		return (NULL);
-	data = (char *)ft_memalloc(sizeof(char) * len + 1);
-	if (data == NULL)
-		return (NULL);
-	c = 0;
-	while (c < (unsigned int)len)
-	{
-		data[c] = s[c + start];
-		c++;
-	}
-	data[c] = '\0';
-	return (data);
-}
+int get_next_line(int const fd, char **line);
+
+#endif
