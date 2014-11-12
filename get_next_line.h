@@ -6,7 +6,7 @@
 /*   By: bbecker <bbecker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 09:51:47 by bbecker           #+#    #+#             */
-/*   Updated: 2014/11/10 18:46:38 by bbecker          ###   ########.fr       */
+/*   Updated: 2014/11/12 16:00:59 by bbecker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,12 @@
 
 typedef	struct		s_infos
 {
-	char	*buf;
 	int		start;
-	int		size;
-	int		state;
 	int		count;
+	char	*tmp;
+	int		state;
+	int		linenu;
+	
 }					t_infos;
 
 int get_next_line(int const fd, char **line);
